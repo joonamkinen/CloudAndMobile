@@ -17,6 +17,18 @@
             android:src="@drawable/logoland" />
 
         <TextView
+            android:id="@+id/randomNumberTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Random Number: 0" />
+
+        <TextView
+            android:id="@+id/latestRandomNumberTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Latest random number: 0" />
+
+        <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/first_name"/>
