@@ -23,14 +23,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         setContentView(R.layout.activity_main);
-
-        if (savedInstanceState != null) {
-            date = savedInstanceState.getString("Date");
-            Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
-        }
 
         TextView randomNumberTextView = findViewById(R.id.randomNumberTextView);
 
@@ -41,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 randomNumber = random.nextInt(100);
                 randomNumberTextView.setText("Random Number: " + randomNumber);
-                handler.postDelayed(this, 1000); // 1000 milliseconds = 1 second
+                handler.postDelayed(this, 1000);
             }
         };
         handler.post(runnable);
@@ -56,8 +51,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        date = savedInstanceState.getString("Date");
+        Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
         int latestRandomNumber = savedInstanceState.getInt("Random");
         TextView latestRandomNumberView = findViewById(R.id.latestRandomNumberTextView);
         latestRandomNumberView.setText("Latest Random Number: " + latestRandomNumber);
     }
+
 }
